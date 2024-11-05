@@ -9,15 +9,26 @@ import { RankedListPageComponent } from './pages/ranked-list-page/ranked-list-pa
 import { FormsModule } from '@angular/forms';
 import { PrimengModule } from '../primeng/primeng.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CardSeriesComponent } from './components/card-series/card-series.component';
+import { ImagenHelperComponent } from './components/imagen-helper/imagen-helper.component';
+import { TableSeriesComponent } from './components/table-series/table-series.component';
+import { NoDataComponent } from './components/no-data/no-data.component';
+import { SerieImagePipe } from './pipes/serie-image.pipe';
 
 @NgModule({
   declarations: [
     LayoutPageComponent,
     ListPageComponent,
     NewPageComponent,
+    SerieImagePipe,
     RankedListPageComponent,
     SidebarComponent,
+    CardSeriesComponent,
+    ImagenHelperComponent,
+    TableSeriesComponent,
+    NoDataComponent,
   ],
   imports: [CommonModule, SeriesRoutingModule, PrimengModule, FormsModule],
+  providers: [SerieImagePipe],
 })
 export class SeriesModule {}

@@ -1,0 +1,17 @@
+.button {
+  display: flex;
+  margin-right: 1%;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 768px) {
+  app-table-series {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  app-card-series {
+    display: none;
+  }
+}

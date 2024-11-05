@@ -1,0 +1,94 @@
+<div class="container">
+  <h1 class="title">{{ title }}</h1>
+
+  <div class="grid">
+    <ng-container *ngIf="series.length > 0">
+      <div
+        *ngFor="let serie of series; let i = index"
+        class="col-12 sm:col-6 lg:col-4 xl:col-3"
+      >
+        <p-card [header]="getContentByField('name', serie, i)">
+          <ng-template pTemplate="header">
+            <div class="card-header" *ngIf="shouldShowField('caratula')">
+              <img
+                [src]="getContentByField('caratula', serie, i)"
+                [alt]="serie.name"
+                class="card-image"
+              />
+              <div *ngIf="shouldShowField('ranking')" class="ranking-badge">
+                #{{ getContentByField("ranking", serie, i) }}
+              </div>
+            </div>
+          </ng-template>
+
+          <div class="card-content">
+            <div *ngIf="shouldShowField('streaming')" class="streaming">
+              <i class="pi pi-play mr-2"></i>
+              {{ getContentByField("streaming", serie, i) }}
+            </div>
+
+            <div *ngIf="shouldShowField('synopsis')" class="synopsis-container">
+              <div class="synopsis-content">
+                {{ getContentByField("synopsis", serie, i) }}
+              </div>
+            </div>
+
+            <div
+              *ngIf="shouldShowField('averageRating')"
+              class="average-rating"
+            >
+              <strong>Nota media:</strong>
+              {{ getContentByField("averageRating", serie, i) }}
+            </div>
+
+            <div *ngIf="shouldShowField('ratings')" class="ratings">
+              <strong>Valoraciones:</strong>
+              <div class="ratings-container">
+                <ng-container
+                  *ngFor="let rating of getContentByField('ratings', serie, i)"
+                >
+                  <div class="rating-item">
+                    {{ rating.fullName }}: {{ rating.rating }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+
+          <ng-template pTemplate="footer">
+            <div class="flex gap-2 justify-content-between">
+              <p-button
+                *ngIf="shouldShowField('personalRating')"
+                [label]="getRatingLabel(serie)"
+                severity="info"
+                [rounded]="true"
+                [raised]="true"
+                [pTooltip]="getRatingTooltip(serie)"
+                tooltipPosition="bottom"
+                [routerLink]="['/series/edit', serie.id]"
+                class="flex-grow-1"
+              ></p-button>
+
+              <p-button
+                *ngIf="shouldShowField('actions')"
+                icon="pi pi-trash"
+                severity="danger"
+                [raised]="true"
+                [rounded]="true"
+                (onClick)="onDelete(serie, $event)"
+                pTooltip="Eliminar"
+                tooltipPosition="bottom"
+              ></p-button>
+            </div>
+          </ng-template>
+        </p-card>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<app-no-data *ngIf="series.length === 0" class="no-data" />
+<p-confirmDialog
+  header="Confirm"
+  acceptLabel="Sí"
+  rejectLabel="No"
+></p-confirmDialog>

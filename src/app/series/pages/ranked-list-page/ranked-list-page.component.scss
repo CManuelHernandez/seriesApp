@@ -1,0 +1,11 @@
+@media screen and (max-width: 768px) {
+  app-table-series {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  app-card-series {
+    display: none;
+  }
+}

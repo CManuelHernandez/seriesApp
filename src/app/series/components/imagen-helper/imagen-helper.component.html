@@ -1,0 +1,35 @@
+<p-button
+  class="helper"
+  (click)="showHelp()"
+  icon="pi pi-question"
+  outlined="true"
+  pTooltip="Guía para añadir Imagen de la serie"
+  label=""
+></p-button>
+
+<p-dialog
+  header="Guía para añadir Imagen de la serie"
+  [modal]="true"
+  [(visible)]="helpVisible"
+  [style]="{ width: '50rem' }"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  [maximizable]="true"
+  (hide)="hideHelp()"
+>
+  <p>
+    Para añadir una imagen mediante el input de imagen alternativa deberemos
+    introducir la Url de una imagen. Para ello realizaremos los siguientes pasos
+  </p>
+  <p>
+    1. Abrir otra pestaña del navegador y buscar la serie cuya imagen queremos
+    añadir en el buscador que prefiramos.
+  </p>
+  <p>2. Hacer clic derecho en la imagen que queramos.</p>
+  <p>3. Seleccionar 'Copiar dirección de la imagen'.</p>
+  <p>4. Pegar el contenido en el input imagen alternativa</p>
+  <p>
+    Si estos pasos han sido correctos se deberá previsualizar la imagen en la
+    tarjeta que se encuentra en la pantalla además del formulario
+  </p>
+  <img src="assets/extras/help.png" alt="help" />
+</p-dialog>

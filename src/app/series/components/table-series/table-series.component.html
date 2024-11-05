@@ -1,0 +1,84 @@
+<div class="card">
+  <h1 class="title">{{ title }}</h1>
+  <ng-container *ngIf="series.length > 0">
+    <p-table
+      class="table"
+      [value]="series"
+      [paginator]="true"
+      [rows]="10"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [rowsPerPageOptions]="[10, 20, 30]"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th *ngFor="let col of columns">{{ col.header }}</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-serie let-rowIndex="rowIndex">
+        <tr>
+          <td *ngFor="let col of columns">
+            <ng-container
+              [ngSwitch]="getCellContent(col, serie, rowIndex).type"
+            >
+              <img
+                *ngSwitchCase="'image'"
+                [src]="getCellContent(col, serie, rowIndex).content"
+                alt="Carátula"
+              />
+
+              <ng-container *ngSwitchCase="'ratings'">
+                <ng-container
+                  *ngFor="
+                    let rating of getCellContent(col, serie, rowIndex).content
+                  "
+                >
+                  {{ rating.fullName }}: {{ rating.rating }}<br />
+                </ng-container>
+              </ng-container>
+              <div class="ratings">
+                <p-button
+                  *ngSwitchCase="'button'"
+                  [label]="getCellContent(col, serie, rowIndex).content.label"
+                  [routerLink]="[
+                    '/series/edit',
+                    getCellContent(col, serie, rowIndex).content.serieId
+                  ]"
+                  [outlined]="true"
+                  severity="info"
+                  [rounded]="true"
+                  [raised]="true"
+                  [pTooltip]="
+                    getCellContent(col, serie, rowIndex).content.tooltip
+                  "
+                  tooltipPosition="bottom"
+                ></p-button>
+              </div>
+
+              <p-button
+                *ngSwitchCase="'deleteButton'"
+                (click)="onDelete(getCellContent(col, serie, rowIndex).content)"
+                icon="pi pi-trash"
+                severity="danger"
+                [raised]="true"
+                [rounded]="true"
+                pTooltip="Eliminar"
+                tooltipPosition="bottom"
+              ></p-button>
+
+              <span *ngSwitchDefault>{{
+                getCellContent(col, serie, rowIndex).content
+              }}</span>
+            </ng-container>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </ng-container>
+</div>
+<app-no-data *ngIf="series.length === 0" />
+<p-confirmDialog
+  header="Confirm"
+  acceptLabel="Sí"
+  rejectLabel="No"
+></p-confirmDialog>

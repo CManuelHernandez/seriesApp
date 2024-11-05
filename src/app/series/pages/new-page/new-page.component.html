@@ -1,1 +1,161 @@
-<p>new-page works!</p>
+<div class="header">
+  <h1>
+    {{ editSerie ? "Editar puntuación de la" : "Crear nueva " }} serie
+    <small *ngIf="editSerie">{{ editSerie.name }}</small>
+  </h1>
+
+  <p-button
+    label="Volver"
+    icon="pi pi-undo"
+    severity="contrast"
+    [rounded]="true"
+    [raised]="true"
+    (click)="onBack()"
+  ></p-button>
+</div>
+
+<p-divider class="divider"></p-divider>
+
+<div class="grid-container">
+  <div class="card-container">
+    <p-card>
+      <form [formGroup]="serieForm" (ngSubmit)="onSubmit()" class="form-grid">
+        <div class="form-column">
+          <span class="p-float-label full-width">
+            <input
+              pInputText
+              id="name"
+              type="text"
+              required
+              formControlName="name"
+              class="w-full"
+              placeholder="Escribe el nombre"
+            />
+            <label for="name">Nombre</label>
+          </span>
+          <small *ngIf="isValidField('name')" class="block p-error">
+            <div *ngIf="serieForm.get('name')?.errors?.['required']">
+              Nombre es obligatorio.
+            </div>
+            <div *ngIf="serieForm.get('name')?.errors?.['minlength']">
+              El nombre debe tener al menos 3 caracteres.
+            </div>
+          </small>
+
+          <p-dropdown
+            [options]="streamingPlatforms"
+            optionLabel="desc"
+            optionValue="id"
+            placeholder="Seleccionar plataforma"
+            required
+            formControlName="streaming"
+            [showClear]="true"
+            class="full-width"
+          ></p-dropdown>
+          <small *ngIf="isValidField('streaming')" class="block p-error">
+            <div *ngIf="serieForm.get('streaming')?.errors?.['required']">
+              Plataforma de streaming es obligatoria.
+            </div>
+          </small>
+
+          <span class="p-float-label full-width">
+            <input
+              pInputText
+              id="ratings"
+              type="number"
+              required
+              formControlName="ratings"
+              class="w-full"
+              placeholder="Escribe la valoración"
+            />
+            <label for="ratings">Valoración</label>
+          </span>
+          <small *ngIf="isValidField('ratings')" class="block p-error">
+            <div *ngIf="serieForm.get('ratings')?.errors?.['required']">
+              Valoración es obligatoria.
+            </div>
+            <div *ngIf="serieForm.get('ratings')?.errors?.['min']">
+              La valoración no puede ser menor a 0.
+            </div>
+            <div *ngIf="serieForm.get('ratings')?.errors?.['max']">
+              La valoración no puede ser mayor a 10.
+            </div>
+          </small>
+        </div>
+
+        <div class="form-column synopsis-column">
+          <span class="p-float-label full-width">
+            <textarea
+              id="synopsis"
+              rows="8"
+              cols="30"
+              pInputTextarea
+              formControlName="synopsis"
+              placeholder="Escribe la sinopsis"
+            ></textarea>
+            <label for="synopsis">Sinopsis</label>
+          </span>
+          <small *ngIf="isValidField('synopsis')" class="block p-error">
+            <div *ngIf="serieForm.get('synopsis')?.errors?.['required']">
+              Sinopsis es obligatoria.
+            </div>
+            <div *ngIf="serieForm.get('synopsis')?.errors?.['minlength']">
+              La sinopsis debe tener al menos 3 caracteres.
+            </div>
+          </small>
+        </div>
+
+        <div class="form-column alt-img-column">
+          <span class="p-float-label full-width">
+            <input
+              pInputText
+              id="alt_img"
+              type="text"
+              formControlName="alt_img"
+              class="w-full"
+              placeholder="Escribe la imagen alternativa"
+            />
+            <label for="alt_img">Imagen alternativa</label>
+          </span>
+          <small *ngIf="isValidField('alt_img')" class="block p-error">
+            <div *ngIf="serieForm.get('alt_img')?.errors?.['required']">
+              La imagen alternativa es obligatoria.
+            </div>
+          </small>
+          <app-imagen-helper
+            [helpVisible]="helpVisible"
+            (onHelpClose)="showHelp()"
+          ></app-imagen-helper>
+        </div>
+      </form>
+
+      <div class="button-container">
+        <button
+          pButton
+          (click)="onSubmit()"
+          [label]="editSerie ? 'Actualizar' : 'Guardar'"
+          icon="pi pi-save"
+          class="primary-button"
+          [disabled]="serieForm.invalid"
+        ></button>
+      </div>
+    </p-card>
+  </div>
+
+  <div class="card-container">
+    <p-card>
+      <img
+        *ngIf="isEditMode"
+        [src]="editSerie | serieImage"
+        alt="Caratula de la serie"
+        class="image-full"
+      />
+      <img
+        *ngIf="!isEditMode"
+        [src]="currentSerie | serieImage"
+        alt="Caratula de la serie"
+        class="image-full"
+      />
+    </p-card>
+  </div>
+</div>
