@@ -3,11 +3,10 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "seriesApp": {
+    "second": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
           "standalone": false
         },
         "@schematics/angular:directive": {
@@ -24,14 +23,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/series-app",
+            "outputPath": "dist/second",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
@@ -39,7 +35,19 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css",
+              {
+                "input": "src/theme-lara-light-blue.scss",
+                "bundleName": "lara-light-blue",
+                "inject": false
+              },
+              {
+                "input": "src/theme-lara-dark-blue.scss",
+                "bundleName": "lara-dark-blue",
+                "inject": false
+              }
             ],
             "scripts": []
           },
@@ -71,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "seriesApp:build:production"
+              "buildTarget": "second:build:production"
             },
             "development": {
-              "buildTarget": "seriesApp:build:development"
+              "buildTarget": "second:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,21 +93,15 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         }
