@@ -1,1 +1,18 @@
-<p>error404-page works!</p>
+<div class="not-found-container">
+  <img
+    src="assets/extras/notFound.gif"
+    alt="Not Found"
+    class="not-found-image"
+  />
+  <div class="not-found-content">
+    <h1>404 - Página no encontrada</h1>
+    <p-button
+      label="Volver a listado"
+      icon="pi pi-undo"
+      severity="contrast"
+      [rounded]="true"
+      [raised]="true"
+      [routerLink]="['/']"
+    ></p-button>
+  </div>
+</div>

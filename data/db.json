@@ -1,0 +1,372 @@
+{
+  "users": [
+    {
+      "fullName": "Manuel",
+      "email": "amigoUno@gmail.com",
+      "password": "1234",
+      "id": 1
+    },
+    {
+      "fullName": "Carlos",
+      "email": "amigoDos@gmail.com",
+      "password": "1234",
+      "id": 2
+    },
+    {
+      "fullName": "Ana",
+      "email": "amigoTres@gmail.com",
+      "password": "1234",
+      "id": 3
+    },
+    {
+      "fullName": "Irene",
+      "email": "amigoCuatro@gmail.com",
+      "password": "1234",
+      "id": 4
+    }
+  ],
+  "series": [
+    {
+      "id": 1,
+      "name": "Band of Brothers",
+      "streaming": "HBO Max",
+      "synopsis": "\"Narra la historia de la Easy Company, un batallón estadounidense del regimiento 506 de paracaidistas, que luchó en Europa durante la II Guerra Mundial. Incluye entrevistas a los supervivientes, recuerdos de los periodistas y cartas de los soldados... Basada en el bestseller 'Band Of Brothers', de Stephen E. Ambrose.",
+      "ratings": [
+        {
+          "fullName": "Carlos",
+          "email": "amigoDos@gmail.com",
+          "rating": 9,
+          "id": 2
+        },
+        {
+          "fullName": "Ana",
+          "email": "amigoTres@gmail.com",
+          "rating": 9,
+          "id": 3
+        },
+        {
+          "fullName": "Irene",
+          "email": "amigoCuatro@gmail.com",
+          "rating": 7,
+          "id": 4
+        },
+        {
+          "fullName": "Manuel",
+          "email": "amigoUno@gmail.com",
+          "rating": 9.8,
+          "id": 1
+        }
+      ],
+      "alt_img": "https://pics.filmaffinity.com/band_of_brothers-541225951-mmed.jpg",
+      "personalRating": 0
+    },
+    {
+      "id": 2,
+      "name": "Pacific",
+      "streaming": "HBO Max",
+      "synopsis": "Sucesora de \"Hermanos de Sangre\", también producida por Steven Spielberg y Tom Hanks, y creada por Dreamworks y HBO, es la serie más cara de todos los tiempos. Se basa sobre todo en las memorias de dos soldados norteamericanos, \"With the Old Breed\" de Eugene Sledge y \"Helmet for My Pillow\" de Robert Leckie, que narran sus experiencias en la lucha contra los japoneses durante la Segunda Guerra Mundia",
+      "ratings": [
+        {
+          "fullName": "Carlos",
+          "email": "amigoDos@gmail.com",
+          "rating": 7.5,
+          "id": 2
+        },
+        {
+          "fullName": "Irene",
+          "email": "amigoCuatro@gmail.com",
+          "rating": 6.5,
+          "id": 4
+        },
+        {
+          "fullName": "Manuel",
+          "email": "amigoUno@gmail.com",
+          "rating": 8,
+          "id": 1
+        }
+      ],
+      "alt_img": "https://pics.filmaffinity.com/the_pacific-295119601-mmed.jpg",
+      "personalRating": 0
+    },
+    {
+      "id": 3,
+      "name": "Masters of the air",
+      "streaming": "Apple TV+",
+      "synopsis": "Durante la Segunda Guerra Mundial muchos aviadores del 100º Grupo de Bombardeo (el 'Bloody Hundredth') arriesgaron sus vidas llevando a cabo peligrosos bombardeos sobre la Alemania nazi y lidiando con las condiciones gélidas, la falta de oxígeno y el terror absoluto de combatir a 25.000 pies de altura. Unos fueron abatidos y capturados; otros resultaron heridos o muertos. Y algunos tuvieron la suerte de volver a casa. Independientemente de los destinos individuales, todos pagaron un precio... Una serie de Steven Spielberg, Tom Hanks y Gary Goetzman, los productores de 'Hermanos de sangre' y 'The Pacific'.",
+      "ratings": [
+        {
+          "fullName": "Manuel",
+          "email": "amigoUno@gmail.com",
+          "rating": 7.5,
+          "id": 1
+        }
+      ],
+      "alt_img": "https://pics.filmaffinity.com/masters_of_the_air-536045140-mmed.jpg",
+      "personalRating": 0
+    },
+    {
+      "id": 4,
+      "name": "The Shield",
+      "streaming": "HBO Max",
+      "synopsis": " Serie de carácter policíaco, cuyo protagonista es el detective Vic Mackey, jefe de una unidad especial del distrito de Fargminton, en Los Ángeles, muy eficaz en su acción contra el crimen, pero que trabaja según normas y métodos tan peculiares que no excluyen procedimientos tan cuestionables como la extorsión, la tortura o el chantaje, si se consideran necesarios.",
+      "ratings": [
+        {
+          "fullName": "Carlos",
+          "email": "amigoDos@gmail.com",
+          "rating": 9.5,
+          "id": 2
+        },
+        {
+          "fullName": "Ana",
+          "email": "amigoTres@gmail.com",
+          "rating": 9,
+          "id": 3
+        },
+        {
+          "fullName": "Irene",
+          "email": "amigoCuatro@gmail.com",
+          "rating": 9.5,
+          "id": 4
+        },
+        {
+          "fullName": "Manuel",
+          "email": "amigoUno@gmail.com",
+          "rating": 9.6,
+          "id": 1
+        }
+      ],
+      "alt_img": "https://pics.filmaffinity.com/the_shield-302979393-mmed.jpg",
+      "personalRating": 0
+    },
+    {
+      "id": 5,
+      "name": "Arcane",
+      "streaming": "Netflix",
+      "synopsis": "'Arcane' ahonda en el precario equilibrio entre la rica ciudad de Piltover y la sórdida y oprimida Zaun. La tensión entre ambas ciudades-estado se exacerba, por un lado, debido a la creación en Piltover de algo llamado \"Hextech\", que permite a cualquiera controlar la energía mágica, y, por otro, de una nueva droga en Zaun llamada \"Shimmer\", que transforma a los humanos en monstruos. La rivalidad entre las dos ciudades divide a las familias y los amigos. 'Arcane' da vida a las relaciones que moldean a algunos de los famosos campeones de ‘League of Legends’, como Vi, Jinx, Caitlyn, Jayce y Viktor",
+      "ratings": [
+        {
+          "fullName": "Carlos",
+          "email": "amigoDos@gmail.com",
+          "rating": 7,
+          "id": 2
+        },
+        {
+          "fullName": "Irene",
+          "email": "amigoCuatro@gmail.com",
+          "rating": 5,
+          "id": 4
+        },
+        {
+          "fullName": "Manuel",
+          "email": "amigoUno@gmail.com",
+          "rating": 7,
+          "id": 1
+        }
+      ],
+      "alt_img": "https://pics.filmaffinity.com/arcane_league_of_legends-266443454-mmed.jpg",
+      "personalRating": 0
+    },
+    {
+      "id": 6,
+      "name": "Ataque a los Titanes",
+      "streaming": "Amazon Prime Video",
+      "synopsis": "Serie basada en el manga del mismo nombre, dirigida por Tetsuro Araki y protagonizada por un grupo de residentes de una ciudad rodeada de murallas, las cuales sirven para proteger a la población de los ataques de gigantes caníbales, quienes de vez en cuando consiguen entrar en el lugar.",
+      "ratings": [
+        {
+          "fullName": "Manuel",
+          "email": "amigoUno@gmail.com",
+          "rating": 8,
+          "id": 1
+        },
+        {
+          "fullName": "Irene",
+          "email": "amigoCuatro@gmail.com",
+          "rating": 8.5,
+          "id": 4
+        },
+        {
+          "fullName": "Carlos",
+          "email": "amigoDos@gmail.com",
+          "rating": 7.9,
+          "id": 2
+        }
+      ],
+      "alt_img": "https://pics.filmaffinity.com/shingeki_no_kyojin_attack_on_titan-890399004-mmed.jpg",
+      "personalRating": 0
+    },
+    {
+      "id": 7,
+      "name": "Guardianes de la noche",
+      "streaming": "Crunchyroll",
+      "synopsis": "Tanjiro se somete a un riguroso entrenamiento con el Hashira de Piedra, Himejima, en su búsqueda por convertirse en un Hashira. Mientras tanto, Muzan sigue buscando a Nezuko y Ubuyashiki.",
+      "ratings": [
+        {
+          "fullName": "Manuel",
+          "email": "amigoUno@gmail.com",
+          "rating": 7,
+          "id": 1
+        },
+        {
+          "fullName": "Irene",
+          "email": "amigoCuatro@gmail.com",
+          "rating": 8,
+          "id": 4
+        },
+        {
+          "fullName": "Carlos",
+          "email": "amigoDos@gmail.com",
+          "rating": 7,
+          "id": 2
+        }
+      ],
+      "alt_img": "https://pics.filmaffinity.com/demon_slayer_kimetsu_no_yaiba_to_the_hashira_training-212135380-mmed.jpg",
+      "personalRating": 0
+    },
+    {
+      "id": 8,
+      "name": "Tenjou Tenge",
+      "streaming": "Crunchyroll",
+      "synopsis": "Souichiro y Bob quieren gobernar su nueva escuela, pero justo cuando empiezan a romper cabezas, su plan se arruina. Primero están las hermanas Natsume y su Juuken Club. Si la hermana mayor, Maya, no les está pateando el trasero, entonces la hermana menor, Aya, está tratando de forzar a Souichiro a alimentarse y convertirlo en su marido. ¡Luego está el Consejo Ejecutivo Estudiantil que envía verdugos para \"educar\" a cualquiera que cuestione la autoridad del consejo! ¡Su educación apenas comienza!",
+      "ratings": [
+        {
+          "fullName": "Manuel",
+          "email": "amigoUno@gmail.com",
+          "rating": 5.5,
+          "id": 1
+        },
+        {
+          "fullName": "Carlos",
+          "email": "amigoDos@gmail.com",
+          "rating": 6,
+          "id": 2
+        }
+      ],
+      "alt_img": "",
+      "personalRating": 0
+    },
+    {
+      "id": 9,
+      "name": "The Mandalorian",
+      "streaming": "Disney+",
+      "synopsis": "Ambientada tras la caída del Imperio y antes de la aparición de la Primera Orden, la serie sigue los pasos de Mando, un cazarrecompensas perteneciente a la legendaria tribu de los mandalorianos, un pistolero solitario que trabaja en los confines de la galaxia, donde no alcanza la autoridad de la Nueva República",
+      "ratings": [
+        {
+          "fullName": "Manuel",
+          "email": "amigoUno@gmail.com",
+          "rating": 8,
+          "id": 1
+        },
+        {
+          "fullName": "Irene",
+          "email": "amigoCuatro@gmail.com",
+          "rating": 7.5,
+          "id": 4
+        },
+        {
+          "fullName": "Ana",
+          "email": "amigoTres@gmail.com",
+          "rating": 8,
+          "id": 3
+        }
+      ],
+      "alt_img": "https://pics.filmaffinity.com/the_mandalorian-299892082-mmed.jpg",
+      "personalRating": 0
+    },
+    {
+      "id": 10,
+      "name": "Ahsoka",
+      "streaming": "Disney+",
+      "synopsis": "Serie protagonizada por el personaje Ahsoka Tano (Rosario Dawson) y ubicada dentro de la línea temporal de “The Mandalorian”. Ambientada después de la caída del Imperio, la serie sigue al antiguo caballero Jedi mientras investiga una amenaza que se cierne sobre la galaxia.",
+      "ratings": [
+        {
+          "fullName": "Manuel",
+          "email": "amigoUno@gmail.com",
+          "rating": 7,
+          "id": 1
+        },
+        {
+          "fullName": "Irene",
+          "email": "amigoCuatro@gmail.com",
+          "rating": 6,
+          "id": 4
+        },
+        {
+          "fullName": "Ana",
+          "email": "amigoTres@gmail.com",
+          "rating": 7,
+          "id": 3
+        }
+      ],
+      "alt_img": "https://pics.filmaffinity.com/ahsoka-572593600-mmed.jpg",
+      "personalRating": 0
+    },
+    {
+      "id": 11,
+      "name": "Andor",
+      "streaming": "Disney+",
+      "synopsis": "12 episodios. Ambientada cinco años antes de los eventos de la película Rogue One,1​ la serie sigue al espía Cassian Andor durante los años de formación de la Alianza Rebelde.​ La serie muestra la transformación de Andor, un ladrón que se convierte en revolucionario y finalmente se une a la Rebelión contra el Imperio Galáctico.",
+      "ratings": [
+        {
+          "fullName": "Carlos",
+          "email": "amigoDos@gmail.com",
+          "rating": 7.5,
+          "id": 2
+        },
+        {
+          "fullName": "Manuel",
+          "email": "amigoUno@gmail.com",
+          "rating": 8,
+          "id": 1
+        },
+        {
+          "fullName": "Irene",
+          "email": "amigoCuatro@gmail.com",
+          "rating": 7,
+          "id": 4
+        },
+        {
+          "fullName": "Ana",
+          "email": "amigoTres@gmail.com",
+          "rating": 8,
+          "id": 3
+        }
+      ],
+      "alt_img": "https://pics.filmaffinity.com/andor-868730434-mmed.jpg",
+      "personalRating": 0
+    },
+    {
+      "id": 12,
+      "name": "South Park",
+      "streaming": "Paramount+",
+      "synopsis": " Serie de animación con mucho humor negro que narra las aventuras de cuatro chicos muy gamberros que viven en la peculiar ciudad de South Park, Colorado.",
+      "ratings": [
+        {
+          "fullName": "Carlos",
+          "email": "amigoDos@gmail.com",
+          "rating": 8,
+          "id": 2
+        },
+        {
+          "fullName": "Ana",
+          "email": "amigoTres@gmail.com",
+          "rating": 8,
+          "id": 3
+        },
+        {
+          "fullName": "Manuel",
+          "email": "amigoUno@gmail.com",
+          "rating": 8,
+          "id": 1
+        },
+        {
+          "fullName": "Irene",
+          "email": "amigoCuatro@gmail.com",
+          "rating": 8,
+          "id": 4
+        }
+      ],
+      "alt_img": "https://pics.filmaffinity.com/south_park-427896108-mmed.jpg",
+      "personalRating": 0
+    }
+  ]
+}

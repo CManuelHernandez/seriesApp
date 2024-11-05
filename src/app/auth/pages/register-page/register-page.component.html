@@ -1,1 +1,97 @@
-<p>register-page works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="submitDetails()">
+  <p-card header="Register" [style]="{ width: '360px' }">
+    <div class="field">
+      <label for="fullName">Nombre</label>
+      <input
+        type="text"
+        pInputText
+        formControlName="fullName"
+        class="w-full"
+        name="fullName"
+        placeholder="Escribe tu nombre"
+      />
+      <small *ngIf="isValidField('fullName')" class="block p-error">
+        <div *ngIf="fullName.errors?.['required']">
+          El nombre es obligatorio.
+        </div>
+        <div *ngIf="fullName.errors?.['pattern']">
+          Introduzca un nombre valido
+        </div>
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input
+        type="text"
+        pInputText
+        formControlName="email"
+        class="w-full"
+        name="email"
+        placeholder="Escribe tu email"
+      />
+      <small *ngIf="isValidField('email')" class="block p-error">
+        <div *ngIf="email.errors?.['required']">Email es obligatorio.</div>
+        <div *ngIf="email.errors?.['email']">
+          Email tiene que tener un formato valido
+        </div>
+        <div *ngIf="email.errors?.['emailExists']">
+          Este email ya está registrado
+        </div>
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        pInputText
+        formControlName="password"
+        class="w-full"
+        name="password"
+        placeholder="Escribe tu contraseña"
+      />
+      <small *ngIf="isValidField('password')" class="block p-error">
+        <div *ngIf="password.errors?.['required']">
+          La contraseña es obligatoria.
+        </div>
+        <div *ngIf="password.errors?.['minlength']">
+          La contraseña debe tener al menos 4 caracteres.
+        </div>
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="confirmPassword">Confirmar contraseña</label>
+      <input
+        type="password"
+        pInputText
+        formControlName="confirmPassword"
+        class="w-full"
+        name="confirmPassword"
+        placeholder="Confirmar Contraseña"
+      />
+      <small *ngIf="isValidField('confirmPassword')" class="block p-error">
+        <div *ngIf="confirmPassword.errors?.['required']">
+          Confirmar contraseña
+        </div>
+      </small>
+      <small
+        class="block p-error"
+        *ngIf="registerForm.errors?.['passwordMismatch'] && confirmPassword.valid && password.valid"
+      >
+        Las contraseñas deben ser iguales
+      </small>
+    </div>
+
+    <p-button
+      label="Registrarse"
+      styleClass="w-full"
+      [disabled]="registerForm.invalid"
+      type="submit"
+    ></p-button>
+    <div class="mt-2">
+      ¿Ya tienes cuenta? <a routerLink="/auth/login">Login</a>
+    </div>
+  </p-card>
+</form>
