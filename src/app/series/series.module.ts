@@ -8,6 +8,7 @@ import { NewPageComponent } from './pages/new-page/new-page.component';
 import { RankedListPageComponent } from './pages/ranked-list-page/ranked-list-page.component';
 import { FormsModule } from '@angular/forms';
 import { PrimengModule } from '../primeng/primeng.module';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { PrimengModule } from '../primeng/primeng.module';
     ListPageComponent,
     NewPageComponent,
     RankedListPageComponent,
+    SidebarComponent,
   ],
   imports: [CommonModule, SeriesRoutingModule, PrimengModule, FormsModule],
 })
