@@ -41,7 +41,7 @@ npm run backend
 2. En una nueva terminal, iniciar la aplicación Angular:
 
 ```bash
-npm start
+npm run start
 ```
 
 ## Descripción de la Aplicación
