@@ -3,25 +3,25 @@
     {
       "fullName": "Manuel",
       "email": "amigoUno@gmail.com",
-      "password": "1234",
+      "password": "1c0245e247106bd94dbef2eb08ea32d64e0f18ad384102e1e1ce503b9753f791",
       "id": 1
     },
     {
       "fullName": "Carlos",
       "email": "amigoDos@gmail.com",
-      "password": "1234",
+      "password": "1c0245e247106bd94dbef2eb08ea32d64e0f18ad384102e1e1ce503b9753f791",
       "id": 2
     },
     {
       "fullName": "Ana",
       "email": "amigoTres@gmail.com",
-      "password": "1234",
+      "password": "1c0245e247106bd94dbef2eb08ea32d64e0f18ad384102e1e1ce503b9753f791",
       "id": 3
     },
     {
       "fullName": "Irene",
       "email": "amigoCuatro@gmail.com",
-      "password": "1234",
+      "password": "1c0245e247106bd94dbef2eb08ea32d64e0f18ad384102e1e1ce503b9753f791",
       "id": 4
     }
   ],

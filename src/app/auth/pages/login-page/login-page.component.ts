@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss',
+  styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
@@ -39,27 +39,42 @@ export class LoginPageComponent implements OnInit {
   }
 
   loginUser() {
+    if (this.loginForm.invalid) {
+      return;
+    }
+
     const { email, password } = this.loginForm.value;
-    this.authService.getUserByEmail(email as string).subscribe(
-      (response) => {
-        if (response.length > 0 && response[0].password === password) {
-          sessionStorage.setItem('email', email as string);
-          this.router.navigate(['/series/list']);
-        } else {
+
+    this.authService.login(email, password).subscribe({
+      next: (user) => {
+        if (user) {
           this.msgService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: 'Credenciales incorrectos',
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Login exitoso',
           });
+          this.router.navigate(['/series/list']);
         }
       },
-      (error) => {
+      error: (error) => {
+        let errorMessage = 'Algo salió mal';
+
+        if (error.message === 'USER_NOT_FOUND') {
+          errorMessage = 'Usuario no encontrado';
+        } else if (error.message === 'INVALID_PASSWORD') {
+          errorMessage = 'Credenciales incorrectos';
+        }
+
         this.msgService.add({
           severity: 'error',
           summary: 'Error',
-          detail: 'Algo salio mal',
+          detail: errorMessage,
         });
-      }
-    );
+      },
+    });
+  }
+
+  isValidField(field: string): boolean | null {
+    return this.authService.isValidField(this.loginForm, field);
   }
 }
