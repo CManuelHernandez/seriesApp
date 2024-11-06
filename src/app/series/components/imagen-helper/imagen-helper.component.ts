@@ -9,10 +9,16 @@ export class ImagenHelperComponent {
   @Input() helpVisible: boolean = false;
   @Input() helpContent: string = '';
 
+  /**
+   * Displays the help overlay by setting `helpVisible` to true.
+   */
   showHelp() {
     this.helpVisible = true;
   }
 
+  /**
+   * Hides the help overlay by setting `helpVisible` to false.
+   */
   hideHelp() {
     this.helpVisible = false;
   }

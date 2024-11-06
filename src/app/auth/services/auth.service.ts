@@ -17,11 +17,22 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Encrypts a given password using SHA-256 with a salt for additional security.
+   * @param password - The plain text password to encrypt.
+   * @returns A SHA-256 hashed string of the salted password.
+   */
   private encryptPassword(password: string): string {
     if (!password) return '';
     return CryptoJS.SHA256(password + this.SALT).toString();
   }
 
+  /**
+   * Registers a new user by encrypting their password and checking if the email already exists.
+   * Throws an error if the email already exists or if the password is missing.
+   * @param userDetails - An object containing the user's details, including password.
+   * @returns An Observable of the API response after the user registration.
+   */
   registerUser(userDetails: User) {
     if (!userDetails.password) {
       throw new Error('Password is required');
@@ -43,6 +54,13 @@ export class AuthService {
     );
   }
 
+  /**
+   * Authenticates a user by verifying their email and encrypted password.
+   * If the user is found and credentials are correct, it updates `userSubject` and stores email in session.
+   * @param email - The email of the user attempting to log in.
+   * @param password - The plain text password provided for login.
+   * @returns An Observable that emits the logged-in user's details, excluding password.
+   */
   login(email: string, password: string): Observable<User | null> {
     return this.getUserByEmail(email).pipe(
       map((users) => {
@@ -65,10 +83,21 @@ export class AuthService {
     );
   }
 
+  /**
+   * Retrieves a user by email from the API.
+   * Used to check if a user already exists or to retrieve user details.
+   * @param email - The email address to search for.
+   * @returns An Observable that emits an array of users matching the email.
+   */
   getUserByEmail(email: string): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/users?email=${email}`);
   }
 
+  /**
+   * Fetches the details of the logged-in user by their email.
+   * Updates `userSubject` with the retrieved user data or `null` if no user is found.
+   * @param email - The email of the logged-in user.
+   */
   fetchLoggedInUser(email: string): void {
     this.getUserByEmail(email)
       .pipe(
@@ -88,10 +117,19 @@ export class AuthService {
       });
   }
 
+  /**
+   * Checks if a form field has validation errors and has been touched.
+   * @param form - The form group containing the field.
+   * @param field - The name of the field to validate.
+   * @returns `true` if the field has errors and was touched, `false` otherwise.
+   */
   public isValidField(form: FormGroup, field: string) {
     return form.controls[field].errors && form.controls[field].touched;
   }
 
+  /**
+   * Logs out the current user by clearing the `userSubject` and removing the email from session storage.
+   */
   logout() {
     this.userSubject.next(null);
     sessionStorage.removeItem('email');

@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+
 import { Serie } from '../../interfaces/series.interface';
 import { SerieImagePipe } from '../../pipes/serie-image.pipe';
 
@@ -20,6 +21,13 @@ export class TableSeriesComponent {
 
   constructor(private serieImagePipe: SerieImagePipe) {}
 
+  /**
+   * Returns the content to be displayed in a cell based on the specified field.
+   * @param col - The column configuration containing the field identifier.
+   * @param serie - The series data item.
+   * @param rowIndex - The row index in the table.
+   * @returns The content and type for the cell, including image paths, ratings, buttons, or text.
+   */
   getCellContent(
     col: { field: string },
     serie: Serie,
@@ -98,6 +106,10 @@ export class TableSeriesComponent {
     }
   }
 
+  /**
+   * Emits an event to delete the specified series item.
+   * @param serie - The series item to be deleted.
+   */
   onDelete(serie: Serie) {
     this.delete.emit(serie);
   }

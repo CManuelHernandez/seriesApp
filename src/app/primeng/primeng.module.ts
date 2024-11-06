@@ -1,38 +1,40 @@
 import { NgModule } from '@angular/core';
-import { CardModule } from 'primeng/card';
-import { InputTextModule } from 'primeng/inputtext';
+
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { ButtonModule } from 'primeng/button';
-import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
-import { TableModule } from 'primeng/table';
+import { CardModule } from 'primeng/card';
+import { ConfirmationService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
 import { DropdownModule } from 'primeng/dropdown';
-import { InputTextareaModule } from 'primeng/inputtextarea';
-import { TooltipModule } from 'primeng/tooltip';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
-import { SidebarModule } from 'primeng/sidebar';
 import { InputSwitchModule } from 'primeng/inputswitch';
-import { DialogModule } from 'primeng/dialog';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputTextModule } from 'primeng/inputtext';
+import { MessageService } from 'primeng/api';
+import { SidebarModule } from 'primeng/sidebar';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [],
   exports: [
-    CardModule,
-    InputTextModule,
-    ReactiveFormsModule,
     ButtonModule,
-    ToastModule,
-    TableModule,
+    CardModule,
+    ConfirmDialogModule,
+    DialogModule,
     DividerModule,
     DropdownModule,
-    InputTextareaModule,
-    TooltipModule,
-    ConfirmDialogModule,
-    SidebarModule,
     InputSwitchModule,
-    DialogModule,
+    InputTextareaModule,
+    InputTextModule,
+    ReactiveFormsModule,
+    SidebarModule,
+    TableModule,
+    ToastModule,
+    TooltipModule,
   ],
   providers: [MessageService, ConfirmationService],
 })

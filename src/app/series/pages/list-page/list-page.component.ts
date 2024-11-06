@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from '../../../auth/interfaces/user.interface';
-import { AuthService } from '../../../auth/services/auth.service';
-import { SeriesService } from '../../services/series.service';
-import { Serie } from '../../interfaces/series.interface';
 import { Subscription } from 'rxjs';
 import { ConfirmationService, MessageService } from 'primeng/api';
+
+import { AuthService } from '../../../auth/services/auth.service';
+import { SeriesService } from '../../services/series.service';
+
+import { User } from '../../../auth/interfaces/user.interface';
+import { Serie } from '../../interfaces/series.interface';
 import { tableColumns, title } from './list-table.config';
 
 @Component({
@@ -28,6 +30,9 @@ export class ListPageComponent implements OnInit, OnDestroy {
     private messageService: MessageService
   ) {}
 
+  /**
+   * Initializes the component by fetching the logged-in user and series data.
+   */
   ngOnInit(): void {
     this.userLoged = sessionStorage.getItem('email') || '';
     this.authService.fetchLoggedInUser(this.userLoged);
@@ -39,6 +44,9 @@ export class ListPageComponent implements OnInit, OnDestroy {
     this.geSeriesFromServer();
   }
 
+  /**
+   * Fetches series data from the server and assigns user ratings if available.
+   */
   geSeriesFromServer(): void {
     this.seriesService.getSeries().subscribe((serie) => {
       this.series = serie.map((serie) => {
@@ -57,6 +65,10 @@ export class ListPageComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Handles the deletion of a series after user confirmation.
+   * @param serie - The series to be deleted.
+   */
   deleteSerie(serie: Serie): void {
     this.confirmationService.confirm({
       message: `¿Estás seguro de que deseas proceder con la eliminación de "${serie.name}"?`,
@@ -94,6 +106,9 @@ export class ListPageComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Unsubscribes from the user subscription when the component is destroyed.
+   */
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }

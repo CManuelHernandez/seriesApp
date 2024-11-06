@@ -1,9 +1,11 @@
-import { Component, OnInit, OnDestroy, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
-import { AuthService } from '../../../auth/services/auth.service';
+
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { DOCUMENT } from '@angular/common';
+
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-layout-page',
@@ -29,6 +31,10 @@ export class LayoutPageComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Initializes the component, sets the user status, and configures the theme settings.
+   * Subscribes to router events to track route changes.
+   */
   ngOnInit(): void {
     this.userLoged = sessionStorage.getItem('email') || '';
     this.authService.fetchLoggedInUser(this.userLoged);
@@ -42,6 +48,10 @@ export class LayoutPageComponent implements OnInit, OnDestroy {
     this.themeText = this.themeSelection ? 'Oscuro' : 'Luminoso';
   }
 
+  /**
+   * Changes the application theme based on the user selection.
+   * @param state - Boolean indicating dark theme (true) or light theme (false).
+   */
   changeTheme(state: boolean) {
     let theme = state ? 'dark' : 'light';
     window.localStorage.setItem('theme', theme);
@@ -53,11 +63,17 @@ export class LayoutPageComponent implements OnInit, OnDestroy {
     this.themeText = state ? 'Oscuro' : 'Luminoso';
   }
 
+  /**
+   * Clears user session and redirects to the login page.
+   */
   logOut(): void {
     sessionStorage.clear();
     this.router.navigate(['auth/login']);
   }
 
+  /**
+   * Cleans up subscriptions when the component is destroyed.
+   */
   ngOnDestroy(): void {
     this.routerSubscription.unsubscribe();
   }

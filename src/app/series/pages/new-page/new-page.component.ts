@@ -1,13 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Serie, StreamingPlataform } from '../../interfaces/series.interface';
-import { AuthService } from '../../../auth/services/auth.service';
-import { User } from '../../../auth/interfaces/user.interface';
 import { Subscription, switchMap } from 'rxjs';
-import { SeriesService } from '../../services/series.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Location } from '@angular/common';
+
+import { Serie, StreamingPlataform } from '../../interfaces/series.interface';
+import { User } from '../../../auth/interfaces/user.interface';
+import { AuthService } from '../../../auth/services/auth.service';
+import { SeriesService } from '../../services/series.service';
 
 @Component({
   selector: 'app-new-page',
@@ -36,6 +37,10 @@ export class NewPageComponent implements OnInit, OnDestroy {
     this.streamingPlatforms = this.getStreamingPlatforms();
   }
 
+  /**
+   * Initializes the component, setting up the form and fetching user data.
+   * If in edit mode, the form will be initialized with existing data.
+   */
   ngOnInit(): void {
     this.isEditMode = this.router.url.includes('edit');
 
@@ -74,6 +79,9 @@ export class NewPageComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Initializes the form for creating a new series.
+   */
   private initCreateForm(): void {
     this.serieForm = this.fb.group({
       id: [''],
@@ -88,6 +96,10 @@ export class NewPageComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Initializes the form for editing an existing series.
+   * Fields are disabled except for the rating.
+   */
   private initEditForm(): void {
     this.serieForm = this.fb.group({
       id: [{ value: '', disabled: true }],
@@ -108,10 +120,16 @@ export class NewPageComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Returns the current series form data.
+   */
   get currentSerie(): Serie {
     return this.serieForm.value;
   }
 
+  /**
+   * Returns a list of available streaming platforms.
+   */
   private getStreamingPlatforms(): Array<{
     id: StreamingPlataform;
     desc: string;
@@ -122,6 +140,9 @@ export class NewPageComponent implements OnInit, OnDestroy {
     }));
   }
 
+  /**
+   * Handles form submission. Adds or updates a series based on whether it's in edit mode.
+   */
   onSubmit(): void {
     if (this.serieForm.invalid || !this.user) return;
 
@@ -176,19 +197,32 @@ export class NewPageComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Checks if a form field is invalid and touched.
+   * @param fieldName - The name of the form field to check.
+   */
   isValidField(fieldName: string): boolean {
     const field = this.serieForm.get(fieldName);
     return !!(field?.invalid && field.touched);
   }
 
+  /**
+   * Navigates back to the previous page.
+   */
   onBack(): void {
     this.location.back();
   }
 
+  /**
+   * Shows help content.
+   */
   showHelp() {
     this.helpVisible = true;
   }
 
+  /**
+   * Unsubscribes from the user subscription when the component is destroyed.
+   */
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -23,6 +24,12 @@ export class LoginPageComponent implements OnInit {
     this.initForm();
   }
 
+  /**
+   * Initializes the `loginForm` FormGroup with controls for 'email' and 'password'.
+   * - The 'email' field is required and must be in a valid email format.
+   * - The 'password' field is required.
+   * This method is called within `ngOnInit` to set up form validation and structure.
+   */
   private initForm(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -30,6 +37,7 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
+  // Getters for each form control, to simplify template binding
   get email() {
     return this.loginForm.controls['email'];
   }
@@ -38,6 +46,13 @@ export class LoginPageComponent implements OnInit {
     return this.loginForm.controls['password'];
   }
 
+  /**
+   * Submits the login form and attempts to authenticate the user.
+   * - First, checks if the form is valid.
+   * - If valid, extracts email and password from the form and sends them to `AuthService.login()`.
+   * - On successful login, displays a success message and navigates to the '/series/list' route.
+   * - If an error occurs (e.g., invalid credentials), displays an error message with specific details.
+   */
   loginUser() {
     if (this.loginForm.invalid) {
       return;
@@ -74,6 +89,13 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
+  /**
+   * Checks if a specified form field is valid or has been touched.
+   * - Uses `AuthService.isValidField` to validate the given field.
+   * - Returns `true` if the field is valid; otherwise, returns `false`.
+   * @param field - The name of the form field to check.
+   * @returns `true` if the field is valid, `false` if it is invalid or untouched.
+   */
   isValidField(field: string): boolean | null {
     return this.authService.isValidField(this.loginForm, field);
   }
