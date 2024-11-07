@@ -44,6 +44,20 @@ npm run backend
 npm run start
 ```
 
+o
+
+```bash
+ng serve
+```
+
+o
+
+```bash
+ng serve -o
+```
+
+Y la aplicación arrancara en http://localhost:4200/
+
 ## Descripción de la Aplicación
 
 SeriesApp es una aplicación para gestionar y valorar series. Cuenta con las siguientes características:
